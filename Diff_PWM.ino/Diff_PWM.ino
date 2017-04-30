@@ -10,12 +10,12 @@ float m = 0;       // (0~100%) Percentage of PWM
 float n = 0;       // (0~100%) Percentage of PWM
 float T = 100;     // PWM at 10kHz
 
-int ENA_L = 3;     // MOTOR_ENA_L at Pin7
-int ENA_R = 7;     // MOTOR_ENA_R at Pin8
-int FR_L = 4;      // MOTOR_FR_L  at Pin3
-int FR_R = 8;      // MOTOR_FR_R  at Pin4
-int MOTOR_L = 5;   // MOTOR_PWM_L at Pin5
-int MOTOR_R = 6;   // MOTOR_PWM_R at Pin6
+int ENA_L = 3;     // MOTOR_ENA_L at D3
+int ENA_R = 7;     // MOTOR_ENA_R at D7
+int FR_L = 4;      // MOTOR_FR_L  at D4
+int FR_R = 8;      // MOTOR_FR_R  at D8
+int MOTOR_L = 5;   // MOTOR_PWM_L at D5
+int MOTOR_R = 6;   // MOTOR_PWM_R at D6
 
 std_msgs::String str_msg;
 std_msgs::Int16 int_msg;
@@ -138,45 +138,6 @@ void set_pwm()
   {
     delayMicroseconds(T);
   }
-
-  /*
-  if (pwm == 0)
-  {
-    set_fr_l(0);
-    set_fr_r(0);
-  }
-  else if (pwm > 0)
-  {
-    set_fr_l(0);
-    set_fr_r(0);
-    set_ena_lr();
-    n = pwm;
-
-    digitalWrite(MOTOR_L, HIGH);
-    digitalWrite(MOTOR_R, HIGH);
-    delayMicroseconds(n);
-    digitalWrite(MOTOR_L, LOW);
-    digitalWrite(MOTOR_R, LOW);
-    delayMicroseconds(T-n);
-  }
-  else if (pwm < 0)
-  {
-    set_fr_l(1);
-    set_fr_r(1);
-    set_ena_lr();
-    n = -pwm;
-
-    digitalWrite(MOTOR_L, HIGH);
-    digitalWrite(MOTOR_R, HIGH);
-    delayMicroseconds(n);
-    digitalWrite(MOTOR_L, LOW);
-    digitalWrite(MOTOR_R, LOW);
-    delayMicroseconds(T-n);
-  }
-  else
-  {
-    ;//Pass
-  }*/
 }
 
 void messageCb(const std_msgs::Int16 &msg)

@@ -72,12 +72,12 @@ void set_pwm()
 
   if (m == n)
   {
-    if ((m==0)&&(n==0))
+    if ((m==0||m==-0)&&(n==0||n==-0))
     {
       set_ena_lr();
       digitalWrite(MOTOR_R, LOW);
       digitalWrite(MOTOR_L, LOW);
-      delayMicroseconds(T); 
+      delayMicroseconds(T);
     }
     else
     {
@@ -89,7 +89,7 @@ void set_pwm()
       digitalWrite(MOTOR_R, LOW);
       delayMicroseconds(T-m);
     }
-    
+
   }
   else if (m>n)
   {
@@ -111,7 +111,7 @@ void set_pwm()
       digitalWrite(MOTOR_L, LOW);
       delayMicroseconds(T-m);
     }
-    
+
   }
   else if (m<n)
   {
